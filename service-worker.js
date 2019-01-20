@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/react-business-tax/build/precache-manifest.e9e42448dcc09ad5edfee9c5096c29b1.js"
+  "/react-business-tax/build/precache-manifest.9c83f71d63c126c5f095cec5fe761580.js"
 );
 
 workbox.clientsClaim();
