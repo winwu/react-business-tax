@@ -29,35 +29,31 @@ class App extends Component {
 		}
 	}
 	renderResult() {
-		if (isNaN(this.state.price) === false && isNaN(this.state.tax) === false) {
-			return (<div className="row">
-				<div className="col-12 col-md-6">
-					<div className="card border-default mb-3">
-						<div className="card-header"><b>含稅價</b></div>
-						<div className="card-body">
-							<h6 className="card-title">金額</h6>
-							<p className="card-text">{this.getIncludeTax.price}</p>
-							<h6 className="card-title">稅金</h6>
-							<p className="card-text">{this.getIncludeTax.taxValue}</p>
-						</div>
+		return (<div className="row">
+			<div className="col-12 col-md-6">
+				<div className="card border-default mb-3">
+					<div className="card-header"><b>含稅價</b></div>
+					<div className="card-body">
+						<h6 className="card-title">金額</h6>
+						<p className="card-text">{this.getIncludeTax.price}</p>
+						<h6 className="card-title">稅金</h6>
+						<p className="card-text">{this.getIncludeTax.taxValue}</p>
 					</div>
 				</div>
-				<div className="col-12 col-md-6">
-					<div className="card border-default mb-3">
-						<div className="card-header"><b>除稅價</b></div>
-						<div className="card-body">
-							<h6 className="card-title">金額</h6>
-							<p className="card-text">{this.getExcludeTax.price}</p>
-							<h6 className="card-title">稅金</h6>
-							<p className="card-text">{this.getExcludeTax.taxValue}</p>
-							<div>{this.getExcludeTax.price} + {this.getExcludeTax.taxValue} =  {this.getExcludeTax.price + this.getExcludeTax.taxValue}</div>
-						</div>
+			</div>
+			<div className="col-12 col-md-6">
+				<div className="card border-default mb-3">
+					<div className="card-header"><b>除稅價</b></div>
+					<div className="card-body">
+						<h6 className="card-title">金額</h6>
+						<p className="card-text">{this.getExcludeTax.price}</p>
+						<h6 className="card-title">稅金</h6>
+						<p className="card-text">{this.getExcludeTax.taxValue}</p>
+						<div>{this.getExcludeTax.price} + {this.getExcludeTax.taxValue} =  {this.getExcludeTax.price + this.getExcludeTax.taxValue}</div>
 					</div>
 				</div>
-			</div>)
-		} else {
-			return null;
-		}
+			</div>
+		</div>)
 	}
 	get getIncludeTax() {
 		// 含稅價
@@ -105,7 +101,7 @@ class App extends Component {
 				</div>
 				<div className="container mt-3 mb-3">
 					{ this.renderWarning() }
-					{ this.renderResult() }
+					{ isNaN(this.state.price) === false && isNaN(this.state.tax) === false  && this.renderResult() ? this.renderResult() : null }
 				</div>
 			</div>
 		);
