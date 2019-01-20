@@ -2,7 +2,7 @@
   "name": "react-business-tax",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://winwu.github.io/react-business-tax",
+  "homepage" : "http://winwu.github.io/react-business-tax/build",
   "dependencies": {
     "bootstrap": "4.2.1",
     "react": "16.7.0",
