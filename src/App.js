@@ -17,6 +17,48 @@ class App extends Component {
 	handlePriceChange(event) {
 		this.setState({price: event.target.value});
 	}
+	renderWarning() {
+		if (this.state.tax === '' && this.state.price === '') {
+			return (<div className="alert alert-warning" role="alert">
+				請填入金額及稅額。
+			</div>)
+		} else if (isNaN(this.state.price) === true || isNaN(this.state.tax) === true) {
+			return (<div className="alert alert-warning" role="alert">
+				<b>Sorry! 我算不出來</b> 請填入正確的數字
+			</div>)
+		}
+	}
+	renderResult() {
+		if (isNaN(this.state.price) === false && isNaN(this.state.tax) === false) {
+			return (<div className="row">
+				<div className="col-12 col-md-6">
+					<div className="card border-default mb-3">
+						<div className="card-header"><b>含稅價</b></div>
+						<div className="card-body">
+							<h6 className="card-title">金額</h6>
+							<p className="card-text">{this.getIncludeTax.price}</p>
+							<h6 className="card-title">稅金</h6>
+							<p className="card-text">{this.getIncludeTax.taxValue}</p>
+						</div>
+					</div>
+				</div>
+				<div className="col-12 col-md-6">
+					<div className="card border-default mb-3">
+						<div className="card-header"><b>除稅價</b></div>
+						<div className="card-body">
+							<h6 className="card-title">金額</h6>
+							<p className="card-text">{this.getExcludeTax.price}</p>
+							<h6 className="card-title">稅金</h6>
+							<p className="card-text">{this.getExcludeTax.taxValue}</p>
+							<div>{this.getExcludeTax.price} + {this.getExcludeTax.taxValue} =  {this.getExcludeTax.price + this.getExcludeTax.taxValue}</div>
+						</div>
+					</div>
+				</div>
+			</div>)
+		} else {
+			return null;
+		}
+	}
 	get getIncludeTax() {
 		// 含稅價
 		return {
@@ -62,38 +104,8 @@ class App extends Component {
 					</div>
 				</div>
 				<div className="container mt-3 mb-3">
-					{ isNaN(this.state.price) === false ? (
-						<div className="row">
-							<div className="col-12 col-md-6">
-								<div className="card border-default mb-3">
-									<div className="card-header"><b>含稅價</b></div>
-									<div className="card-body">
-										<h6 className="card-title">金額</h6>
-										<p className="card-text">{this.getIncludeTax.price}</p>
-										<h6 className="card-title">稅金</h6>
-										<p className="card-text">{this.getIncludeTax.taxValue}</p>
-									</div>
-								</div>
-							</div>
-							<div className="col-12 col-md-6">
-								<div className="card border-default mb-3">
-									<div className="card-header"><b>除稅價</b></div>
-									<div className="card-body">
-										<h6 className="card-title">金額</h6>
-										<p className="card-text">{this.getExcludeTax.price}</p>
-										<h6 className="card-title">稅金</h6>
-										<p className="card-text">{this.getExcludeTax.taxValue}</p>
-										<div>{this.getExcludeTax.price} + {this.getExcludeTax.taxValue} =  {this.getExcludeTax.price + this.getExcludeTax.taxValue}</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						) : (
-							<div class="alert alert-warning" role="alert">
-								<b>Sorry! 我算不出來</b> 請填入正確的數字
-						  	</div>
-						)
-					}
+					{ this.renderWarning() }
+					{ this.renderResult() }
 				</div>
 			</div>
 		);
