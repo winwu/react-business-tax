@@ -1,15 +1,15 @@
 {
-  "main.css": "/react-business-tax/build/static/css/main.f7fa039b.chunk.css",
-  "main.js": "/react-business-tax/build/static/js/main.e2bb436c.chunk.js",
-  "main.js.map": "/react-business-tax/build/static/js/main.e2bb436c.chunk.js.map",
-  "static/css/1.09ad6099.chunk.css": "/react-business-tax/build/static/css/1.09ad6099.chunk.css",
-  "static/js/1.107514e1.chunk.js": "/react-business-tax/build/static/js/1.107514e1.chunk.js",
-  "static/js/1.107514e1.chunk.js.map": "/react-business-tax/build/static/js/1.107514e1.chunk.js.map",
-  "runtime~main.js": "/react-business-tax/build/static/js/runtime~main.74ff01ea.js",
-  "runtime~main.js.map": "/react-business-tax/build/static/js/runtime~main.74ff01ea.js.map",
-  "static/css/main.f7fa039b.chunk.css.map": "/react-business-tax/build/static/css/main.f7fa039b.chunk.css.map",
-  "static/css/1.09ad6099.chunk.css.map": "/react-business-tax/build/static/css/1.09ad6099.chunk.css.map",
-  "index.html": "/react-business-tax/build/index.html",
-  "precache-manifest.9c83f71d63c126c5f095cec5fe761580.js": "/react-business-tax/build/precache-manifest.9c83f71d63c126c5f095cec5fe761580.js",
-  "service-worker.js": "/react-business-tax/build/service-worker.js"
+  "main.css": "/react-business-tax/static/css/main.f7fa039b.chunk.css",
+  "main.js": "/react-business-tax/static/js/main.a2c36404.chunk.js",
+  "main.js.map": "/react-business-tax/static/js/main.a2c36404.chunk.js.map",
+  "static/css/1.09ad6099.chunk.css": "/react-business-tax/static/css/1.09ad6099.chunk.css",
+  "static/js/1.107514e1.chunk.js": "/react-business-tax/static/js/1.107514e1.chunk.js",
+  "static/js/1.107514e1.chunk.js.map": "/react-business-tax/static/js/1.107514e1.chunk.js.map",
+  "runtime~main.js": "/react-business-tax/static/js/runtime~main.890b1bd0.js",
+  "runtime~main.js.map": "/react-business-tax/static/js/runtime~main.890b1bd0.js.map",
+  "static/css/main.f7fa039b.chunk.css.map": "/react-business-tax/static/css/main.f7fa039b.chunk.css.map",
+  "static/css/1.09ad6099.chunk.css.map": "/react-business-tax/static/css/1.09ad6099.chunk.css.map",
+  "index.html": "/react-business-tax/index.html",
+  "precache-manifest.24a3ab206a4c4437e9275329535bddd1.js": "/react-business-tax/precache-manifest.24a3ab206a4c4437e9275329535bddd1.js",
+  "service-worker.js": "/react-business-tax/service-worker.js"
 }
