@@ -2,7 +2,7 @@
   "name": "react-business-tax",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://winwu.github.io/react-business-tax",
+  "homepage": "http://winwu.github.io/react-business-tax/build",
   "dependencies": {
     "bootstrap": "4.2.1",
     "react": "16.7.0",
@@ -13,7 +13,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -23,5 +25,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "2.0.1"
+  }
 }

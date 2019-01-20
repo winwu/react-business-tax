@@ -27,3 +27,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run eject`
 
+
+### Deploy 到 gh-pages
+
+```
+npm run deploy
+```
