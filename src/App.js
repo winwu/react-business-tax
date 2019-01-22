@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
+import Form from './components/Form';
+import Result from './components/Result';
+import './App.scss';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			tax: 5,
-			price: 0
-		};
+		this.state = { tax: 5, price: 0 };
 		this.handleTaxChange = this.handleTaxChange.bind(this);
 		this.handlePriceChange = this.handlePriceChange.bind(this);
 	}
@@ -17,91 +16,60 @@ class App extends Component {
 	handlePriceChange(event) {
 		this.setState({price: event.target.value});
 	}
-	renderWarning() {
-		if (this.state.tax === '' && this.state.price === '') {
-			return (<div className="alert alert-warning" role="alert">
-				請填入金額及稅額。
-			</div>)
-		} else if (isNaN(this.state.price) === true || isNaN(this.state.tax) === true) {
-			return (<div className="alert alert-warning" role="alert">
-				<b>Sorry! 我算不出來</b> 請填入正確的數字
-			</div>)
-		}
-	}
-	renderResult() {
-		return (<div className="row">
-			<div className="col-12 col-md-6">
-				<div className="card border-default mb-3">
-					<div className="card-header"><b>含稅價</b></div>
-					<div className="card-body">
-						<h6 className="card-title">金額</h6>
-						<p className="card-text">{this.getIncludeTax.price}</p>
-						<h6 className="card-title">稅金</h6>
-						<p className="card-text">{this.getIncludeTax.taxValue}</p>
-					</div>
-				</div>
-			</div>
-			<div className="col-12 col-md-6">
-				<div className="card border-default mb-3">
-					<div className="card-header"><b>除稅價</b></div>
-					<div className="card-body">
-						<h6 className="card-title">金額</h6>
-						<p className="card-text">{this.getExcludeTax.price}</p>
-						<h6 className="card-title">稅金</h6>
-						<p className="card-text">{this.getExcludeTax.taxValue}</p>
-						<div>{this.getExcludeTax.price} + {this.getExcludeTax.taxValue} =  {this.getExcludeTax.price + this.getExcludeTax.taxValue}</div>
-					</div>
-				</div>
-			</div>
-		</div>)
-	}
 	get getIncludeTax() {
 		// 含稅價
+    const { price, tax } = this.state;
 		return {
-			taxValue: Math.round(this.state.price * (this.state.tax/100)),
-			price: Math.round(this.state.price * (1 + this.state.tax/100))	
+			taxValue: Math.round(price * (tax / 100)),
+			price: Math.round(price * (1 + tax / 100))	
 		}
 	}
 	get getExcludeTax() {
 		// 除稅價
-		let exPrice = Math.round(this.state.price/(1 + this.state.tax/100));
+    const { price, tax } = this.state;
+		let exPrice = Math.round(price/(1 + tax / 100));
 		return {
-			taxValue: this.state.price - exPrice,
+			taxValue: price - exPrice,
 			price: exPrice
 		}
 	}
 	render() {
+    const {
+      state: { price, tax },
+      getIncludeTax,
+      getExcludeTax,
+      handleTaxChange,
+      handlePriceChange,
+    } = this;
+
 		return (
 			<div className="App">
-				<div className="jumbotron jumbotron-fluid">
-					<div className="container">
-						<div className="text-right">
-							<a className="github-button" href="https://github.com/winwu/react-business-tax/issues" aria-label="Issue winwu/react-business-tax on GitHub">Issue</a>
-						</div>
-						<h1 className="display-4">營業稅試算</h1>
-						<p className="lead">練習 React 用，算錯不負責 XD</p>
-						<div className="form-row">
-							<div className="col-auto mb-3">
-								<label htmlFor="price-input">金額</label>
-								<input id="price-input" className="form-control" type="text" value={this.state.price} pattern="[0-9.]+" onChange={this.handlePriceChange}/>
-							</div>
-							<div className="col-auto">
-								<div className="mb-3">
-									<label htmlFor="tax-input">設定稅額</label>
-									<div className="input-group">
-										<input id="tax-input" className="form-control" type="text" value={this.state.tax} pattern="[0-9.]+" onChange={this.handleTaxChange}/>
-										<div className="input-group-append">
-											<div className="input-group-text">%</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+        <Form
+          {...this.state}
+          {...{
+            handleTaxChange,
+            handlePriceChange,
+          }}
+        />
 				<div className="container mt-3 mb-3">
-					{ this.renderWarning() }
-					{ isNaN(this.state.price) === false && isNaN(this.state.tax) === false  && this.renderResult() ? this.renderResult() : null }
+              { !tax && !price &&
+                <div className="alert alert-warning" role="alert">
+                  請填入金額及稅額。
+                </div>
+              }
+              { (isNaN(price) || isNaN(tax)) &&
+                <div className="alert alert-warning" role="alert">
+                  <b>Sorry! 我算不出來</b> 請填入正確的數字
+                </div>
+              }
+              { !isNaN(price) && !isNaN(tax) &&
+                <Result
+                  {...{
+                    getIncludeTax,
+                    getExcludeTax,
+                  }}
+                />
+              }
 				</div>
 			</div>
 		);

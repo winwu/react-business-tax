@@ -27,6 +27,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "gh-pages": "2.0.1"
+    "gh-pages": "2.0.1",
+    "node-sass": "^4.11.0"
   }
 }
